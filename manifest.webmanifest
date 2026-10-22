@@ -1,0 +1,15 @@
+{
+ "name":"Mijn Knie — Pijnlogboek & JournalSpeak",
+ "short_name":"Mijn Knie",
+ "description":"Privé pijndagboek en een schrijfplek om gedachten los te laten.",
+ "lang":"nl-NL",
+ "start_url":"./",
+ "scope":"./",
+ "display":"standalone",
+ "background_color":"#101b20",
+ "theme_color":"#101b20",
+ "icons":[
+  {"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+  {"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+ ]
+}
