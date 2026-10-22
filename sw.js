@@ -1,5 +1,5 @@
-// Offline ondersteuning; nieuwe cacheversie voorkomt oude Gym Tracker-pagina's.
-const CACHE='mijn-knie-v2-0';
+// Offline support with a new cache version.
+const CACHE='my-knee-v3-0';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE&&(/^(mijn-gym-|mijn-knie-)/.test(key))).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
