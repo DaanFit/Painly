@@ -1,20 +1,22 @@
-# Painly v6.4 — Daily knee routine
+# Painly v6.5 — Morning routine
 
 ## Nieuw
 
-Een apart Engelstalig tabblad **Daily routine / Routine** met:
-- Vrij instelbare isometric-timer in seconden (standaard 45; snelkeuzes 45/60/90/120).
-- Start, pauze, hervatten en resetten; iedere volgende oefening start je zelf.
-- 10 step downs per been en 10 deep squats, met tellers en afvinkknoppen.
-- Verplichte pijnscores (0–10) voor beide knieën, voor en na de hele routine.
-- Een voorstel van +15 seconden voor een volgende routine, uitsluitend wanneer de laatste routine volledig is afgerond en alle vier de scores lager zijn dan 2. Jij bevestigt de wijziging; er is geen automatische verhoging.
-- Routinegeschiedenis en het aantal afgeronde dagen in de afgelopen 7 dagen.
-- Gedeeltelijke routines opslaan; die geven geen verhogingsvoorstel.
-- De gekozen tijd en een onafgeronde routine blijven lokaal bewaard.
-- Routines, timerinstellingen en voortgang zitten in de bestaande JSON-back-up.
-- Een aparte CSV-export voor routines in het nieuwe tabblad.
+- Painly opent direct op **Morning routine**. Dit is ook het eerste tabblad.
+- Pijncheck voor beide knieën voor je begint.
+- **3 isometric-holds** met je eigen tijd per set. Na set 1 en 2 start automatisch een **rusttimer van 60 seconden**. Je start elke volgende hold zelf. Er volgt geen rusttimer na de derde set.
+- Pauzeren, hervatten, huidige hold/rust resetten en voortgang bewaren blijven beschikbaar.
+- Na het hele isometric-blok vul je voor beide knieën een pijnscore in.
+- Daarna vul je de uitgevoerde **step-down-herhalingen per been** in en tik je op **Done**. Daarna volgt een pijncheck voor beide knieën.
+- Vervolgens vul je de **deep-squat-herhalingen** in en tik je op **Done**. Daarna volgt de laatste pijncheck.
+- De doelen blijven 10 step downs per been en 10 deep squats; je kunt het werkelijke aantal invullen (ook lager of hoger). Minder dan het doel of eerder stoppen wordt als gedeeltelijk opgeslagen, zonder verhogingsvoorstel.
+- In de geschiedenis zie je de sets, herhalingen en alle vier meetmomenten (vooraf, na isometrics, na step downs, na deep squats).
+- Je afgesproken +15 seconden-regel blijft gebaseerd op beide knieën voor en aan het einde van de volledige routine. Alle vier die scores moeten lager dan 2 zijn. De tussentijdse scores worden apart bijgehouden. De verhoging is altijd een voorstel dat je zelf bevestigt.
+- Routines en alle nieuwe meetgegevens zitten in JSON-back-ups en de aparte routine-CSV.
 
-De voortgangsregel is jouw ingestelde registratieregel, geen medische beoordeling of automatische trainingsinstructie. De bestaande pijnregistratie, pijnrichtlijnen, grafiek, JournalSpeak, meditatie, kleuren en iconen zijn behouden.
+Oudere opgeslagen routines blijven bewaard als eerdere routines met één set; niet-gemeten pijnscores worden als — getoond. Een oudere onafgeronde routine wordt zonder verzonnen sets of pijnscores voortgezet. Start een nieuwe routine voor de nieuwe reeks van drie holds.
+
+De overige onderdelen — pijnregistratie, bestaande pijnrichtlijnen, grafiek, JournalSpeak, meditatie, kleuren en iconen — zijn behouden. De progressieregel is jouw registratieregel, geen medische beoordeling.
 
 ## Je bestaande GitHub Pages-app bijwerken
 
@@ -42,4 +44,4 @@ Painly bewaart gegevens op dit toestel onder de bestaande sleutel `mijn-knie-jou
 
 ## Validatie
 
-Getest in Chromium op mobiele en desktopformaten (320–1040 px), zonder horizontale overloop; lichte en donkere weergave visueel gecontroleerd. Functioneel gecontroleerd: volledige routine, losse telling per been, timer pauzeren/hervatten en herladen, alle vier de grenswaarden van 2, onvolledige routines, eenmalig bevestigen van progressie, JSON-export/herstel, oude back-ups, afwijzen van ongeldige back-ups, terugdraaien bij opslagfouten en behoud van bestaande geschiedenis/thema/JournalSpeak/meditatie. Controle op een fysieke iPhone blijft nodig voor geluid en schermvergrendeling.
+Functioneel getest: routine als startpagina; drie holds met twee rustperiodes; handmatig starten van volgende sets; pauzeren en hervatten na herladen; lange achtergrondpauzes zonder automatisch extra holds af te ronden; ingevulde aantallen met één klik op Done; alle pijncheckpoints; grenswaarde 2; oudere back-ups/routines; opslagfouten en bestaande log/thema/JournalSpeak/meditatie. Mobiele en desktopweergave getest in Chromium. Een fysieke iPhone-test blijft nodig voor geluid en scherm wakker houden.
