@@ -1,45 +1,45 @@
-# Painly v6 — installation and backup
+# Painly v6.4 — Daily knee routine
 
-Painly is a personal, English-language pain journal and JournalSpeak/meditation website. It is a static website that can be hosted through GitHub Pages. No server, tracking, analytics or accounts are included. It stores pain entries only in the browser on the device you're using.
+## Nieuw
 
-## What's new
+Een apart Engelstalig tabblad **Daily routine / Routine** met:
+- Vrij instelbare isometric-timer in seconden (standaard 45; snelkeuzes 45/60/90/120).
+- Start, pauze, hervatten en resetten; iedere volgende oefening start je zelf.
+- 10 step downs per been en 10 deep squats, met tellers en afvinkknoppen.
+- Verplichte pijnscores (0–10) voor beide knieën, voor en na de hele routine.
+- Een voorstel van +15 seconden voor een volgende routine, uitsluitend wanneer de laatste routine volledig is afgerond en alle vier de scores lager zijn dan 2. Jij bevestigt de wijziging; er is geen automatische verhoging.
+- Routinegeschiedenis en het aantal afgeronde dagen in de afgelopen 7 dagen.
+- Gedeeltelijke routines opslaan; die geven geen verhogingsvoorstel.
+- De gekozen tijd en een onafgeronde routine blijven lokaal bewaard.
+- Routines, timerinstellingen en voortgang zitten in de bestaande JSON-back-up.
+- Een aparte CSV-export voor routines in het nieuwe tabblad.
 
-- New Painly branding, minimalist P iPhone home-screen icon and sharing preview.
-- Soft Sage light and dark modes, switchable in Settings.
-- Track joint pain with left/right locations and one 0–10 score for each selected location. Neck, back and Other also supported.
-- Knee-focused training load guide: score below 4 = consider gradually increasing; 4–6 = maintain; above 6 = reduce. This is only a planning aid, not medical advice.
-- One chart with optional comparison between two locations; 7 days, 30 days, 3 months, 1 year.
-- JournalSpeak: temporary text, shredder animation, meditation timer. JournalSpeak writing is never saved in pain history/backups.
+De voortgangsregel is jouw ingestelde registratieregel, geen medische beoordeling of automatische trainingsinstructie. De bestaande pijnregistratie, pijnrichtlijnen, grafiek, JournalSpeak, meditatie, kleuren en iconen zijn behouden.
 
-## Updating an existing GitHub Pages website
+## Je bestaande GitHub Pages-app bijwerken
 
-1. On your *current* website, go to Settings → Download backup (JSON). Keep this file private and safe, not in your public GitHub repository.
-2. Extract the quick-update ZIP and upload the following files to the **root** of your existing GitHub repository:
+1. Open je huidige Painly op je iPhone. Ga naar **Settings → Download backup (JSON)**. Bewaar de back-up privé; upload hem nooit naar je openbare GitHub-repository.
+2. Pak het ZIP-bestand uit op je computer.
+3. Upload deze **vijf bestanden samen**, rechtstreeks naar dezelfde map in je bestaande Painly-repository waar de huidige `index.html` staat:
    - `index.html`
    - `app.js`
+   - `routine.js` (nieuw)
    - `styles.css`
-   - `manifest.webmanifest`
    - `sw.js`
-   - `share-preview.png`
-   - the whole `icons` folder (all four icon files)
-3. Commit the changes.
-4. In Settings → Pages, check `Deploy from a branch`, branch `main`, folder `/(root)`.
-5. Open your published website, reload and/or close and reopen the Home Screen app if an old icon/page is cached.
-6. Confirm your old saved pain entries are present before deleting anything or switching URLs.
+4. Vervang de bestaande bestanden en sla de wijzigingen op met **Commit changes**. Maak geen extra bovenliggende map. De bestaande icons-map, manifest en share-preview hoeven niet vervangen te worden.
+5. Wacht tot GitHub Pages is bijgewerkt. Sluit Painly helemaal af en open hem opnieuw. Herlaad eventueel ook de bestaande Painly-website in Safari en open de app daarna opnieuw.
+6. Controleer of je bestaande pijnregistraties aanwezig zijn en of je onderaan **Routine** ziet. Wis geen Safari-websitegegevens om een update af te dwingen.
 
-**Important:** Local browser data is tied to the website **origin** (including the domain); moving between `https://username.github.io/old-repo/` and `https://username.github.io/new-repo/` often *shares the same localStorage origin* if both use the same username and domain. But switching to another username or custom domain does **not** automatically transfer data. Always export a backup and import it on the new site if needed. Never place a JSON/CSV pain backup in the public repository.
+Het complete ZIP-bestand bevat ook de ongewijzigde iconen en manifest. Voor een bestaande installatie volstaan de vijf bestanden hierboven. Blijf dezelfde website en hetzelfde beginscherm-icoon gebruiken.
 
-## Installing on an iPhone
+## Timer op je iPhone
 
-1. Open the published site in **Safari**.
-2. Tap **Share** → **Add to Home Screen**.
-3. Confirm the name **Painly** and add it.
-4. If the icon still looks old, remove the older Home Screen shortcut and add the website again. Do not clear Safari website data without exporting a backup.
+Houd Painly geopend tijdens de oefening. Waar ondersteund vraagt de timer om het scherm wakker te houden; dit is afhankelijk van de browser en het toestel. Als de app naar de achtergrond gaat, berekent de timer bij terugkomst de resterende tijd op basis van de klok. Geluid terwijl de iPhone vergrendeld is wordt niet gegarandeerd. Deze webversie biedt geen Live Activities. Een optioneel eindsignaal speelt wanneer de pagina zichtbaar is en je toestel geluid toestaat.
 
-## Previewing offline
+## Opslag en back-ups
 
-`painly-v6-demo.html` is an all-in-one HTML demonstration for desktop browsers. GitHub Pages is the recommended way to run the PWA and test iPhone installation.
+Painly bewaart gegevens op dit toestel onder de bestaande sleutel `mijn-knie-journal-v1`. Routines staan in een eigen onderdeel van datzelfde back-upbestand; ze veranderen bestaande pijnregistraties niet. Er is geen automatische cloudopslag. Een back-up zonder dailyRoutine-onderdeel vervangt alleen pijnregistraties en laat bestaande routines staan. Een nieuwe back-up met dailyRoutine vervangt ook de routines en timerinstellingen, na bevestiging. De bestaande CSV-knop in Settings exporteert pijnregistraties; routine-CSV staat in Routine. JournalSpeak-tekst wordt nooit opgeslagen of opgenomen in back-ups.
 
-## Data and privacy
+## Validatie
 
-Pain data is stored under `mijn-knie-journal-v1` for compatibility with older versions. Older entries in the original left/right knee format are transformed *in memory* into the new joint format; the original stored data is not rewritten until a new entry is saved, or you import/delete entries. JournalSpeak drafts are not stored in browser storage or exported, but sites cannot guarantee the erasure of keyboard/operating-system caches. The meditation timer runs according to the clock, but background iOS browser restrictions can delay updates and sounds.
+Getest in Chromium op mobiele en desktopformaten (320–1040 px), zonder horizontale overloop; lichte en donkere weergave visueel gecontroleerd. Functioneel gecontroleerd: volledige routine, losse telling per been, timer pauzeren/hervatten en herladen, alle vier de grenswaarden van 2, onvolledige routines, eenmalig bevestigen van progressie, JSON-export/herstel, oude back-ups, afwijzen van ongeldige back-ups, terugdraaien bij opslagfouten en behoud van bestaande geschiedenis/thema/JournalSpeak/meditatie. Controle op een fysieke iPhone blijft nodig voor geluid en schermvergrendeling.
